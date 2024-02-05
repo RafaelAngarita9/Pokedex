@@ -41,7 +41,7 @@
                 <div class="pokemonList" id="pokemonList">
                     <div class="name-list-container">
                         <ul style="list-style-type: none;">
-                            <!-- Use ngFor to iterate through the first 8 items -->
+                            <!-- Use ngFor to iterate through the first 10 items -->
                             <li *ngFor="let pokemon of sortedPokemonList | slice:0:10">
                                 <a [routerLink]="['/pokemon', pokemon.originalNumber]"
                                 (mouseenter)="onPokemonHover(pokemon)"
@@ -51,15 +51,6 @@
                             </li>
                         </ul>
                     </div>
-                <!-- <ul style="list-style-type: none;">
-                    <li *ngFor="let pokemon of sortedPokemonList">
-                        <a [routerLink]="['/pokemon', pokemon.originalNumber]"
-                        (mouseenter)="onPokemonHover(pokemon)"
-                        (mouseleave)="onPokemonHover(null)">
-                        {{ formatPokemonNumber(pokemon.originalNumber) }} {{ pokemon.name }}
-                        </a>
-                    </li>
-                </ul> -->
                 </div>
             </div>
         </div>
