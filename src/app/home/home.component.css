@@ -76,9 +76,9 @@ li {
 }
 
 @media (max-width: 767px) {
-    img.logo[_ngcontent-ng-c724770461] {
-        height: auto;
-        width: 75%;
+
+    img.logo {
+        width: 375px !important;
     }
     a {
         color: black;
