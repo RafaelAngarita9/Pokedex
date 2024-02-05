@@ -1,0 +1,46 @@
+<div class="triangle top-left"></div>
+<div class="triangle bottom-right"></div>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="leftSide">
+          <div class="picture" *ngIf="selectedPokemon && selectedPokemon.id">
+            <img [src]="getImageUrl(selectedPokemon.id)" alt="Pokemon Image">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="right_square">
+          <div class="pokemonDetails" id="pokemonDetails">
+            <h3>{{ selectedPokemon.name}}</h3>
+            <table *ngIf="selectedPokemon" class="pokemon-table">
+              <tr *ngIf="selectedPokemon && selectedPokemon.types">
+                <td class="title">Type:</td>
+                <td>
+                  <div *ngFor="let type of selectedPokemon.types" class="type-badge">
+                    {{ type.type.name }}
+                  </div>
+                </td>
+              </tr>
+                <tr>
+                  <td class="title">Number:</td>
+                  <td>{{ formatPokemonNumber(selectedPokemon.id) || 'N/A' }}</td>
+                </tr>
+                <tr *ngIf="selectedPokemon && selectedPokemon.details">
+                  <td class="title">Weight:</td>
+                  <td>{{ selectedPokemon.details.weight !== undefined ? selectedPokemon.details.weight : 'N/A' }}Dg</td>
+                </tr>
+                <tr *ngIf="selectedPokemon.details">
+                  <td class="title">Height:</td>
+                  <td>{{ selectedPokemon.details?.height || 'N/A' }}dm</td>
+                </tr>
+            </table>
+      <div class="flavor-text-box" *ngIf="selectedPokemon && selectedPokemon.speciesInfo">
+        <p>{{ selectedPokemon.speciesInfo.flavor_text || 'N/A' }}</p>
+      </div>
+      <p *ngIf="!selectedPokemon">Loading...</p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

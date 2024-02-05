@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="header">
+            <div class="col-sm-10 col-md-6 col-lg-6">
+                <div class="title">
+                    <img src="/assets/logo.png" class="logo">
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 d-none d-md-block">
+                <div class="sort-controls">
+                    <label for="sort">Sort:</label>
+                    <select id="sort" (change)="onSortChange($event)">
+                        <option value="number">Number</option>
+                        <option value="weight">Weight</option>
+                        <option value="height">Height</option>
+                    </select>
+                    
+                    <label for="order">Order:</label>
+                    <select id="order" (change)="onOrderChange($event)">
+                        <option value="asc">Asc</option>
+                        <option value="desc">Desc</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-none d-md-block col-md-6 col-lg-6">
+            <div class="left_square">
+                <div class="picture" *ngIf="hoveredPokemonId !== null">
+                <img [src]="getImageUrl(hoveredPokemonId)" alt="Pokemon Image" class="picturePokemon">
+                </div>
+                <div class="weightHeight" *ngIf="hoveredPokemon !== null && hoveredPokemon.details !== undefined">
+                    <p id="weight">Weight: {{ hoveredPokemon.details.weight || 'N/A' }}Dg</p>
+                    <p if="height">Height: {{ hoveredPokemon.details.height || 'N/A' }}dm</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="right_square">
+                <div class="pokemonList" id="pokemonList">
+                    <div class="name-list-container">
+                        <ul style="list-style-type: none;">
+                            <!-- Use ngFor to iterate through the first 8 items -->
+                            <li *ngFor="let pokemon of sortedPokemonList | slice:0:10">
+                                <a [routerLink]="['/pokemon', pokemon.originalNumber]"
+                                (mouseenter)="onPokemonHover(pokemon)"
+                                (mouseleave)="onPokemonHover(null)">
+                                {{ formatPokemonNumber(pokemon.originalNumber) }} {{ pokemon.name }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                <!-- <ul style="list-style-type: none;">
+                    <li *ngFor="let pokemon of sortedPokemonList">
+                        <a [routerLink]="['/pokemon', pokemon.originalNumber]"
+                        (mouseenter)="onPokemonHover(pokemon)"
+                        (mouseleave)="onPokemonHover(null)">
+                        {{ formatPokemonNumber(pokemon.originalNumber) }} {{ pokemon.name }}
+                        </a>
+                    </li>
+                </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
