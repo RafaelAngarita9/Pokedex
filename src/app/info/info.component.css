@@ -108,6 +108,12 @@ h3 {
 }
 
 @media (max-width: 767px) {
+
+  img {
+    height: auto;
+    width: 360px;
+    
+  }
   div#pokemonDetails {
     display: flex;
     flex-direction: column;
