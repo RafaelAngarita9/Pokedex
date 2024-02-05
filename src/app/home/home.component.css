@@ -95,16 +95,25 @@ li {
         display: none;
     }
 
-    .right_square {
-        position: static;
+    .right_square[_ngcontent-ng-c2519382277] {
+        position: relative;
+        float: right;
+        height: 50vh;
         width: 100%;
-        margin: 0;
-        text-align: left;
-        background-size: cover;
-        background-position: center;
     }
 
     .right_square .pokemonList {
-        margin: 20px 0px 0px -50px ;
+        margin: 20px 0px 0px -104px ;
     }
+
+    .container-fluid {
+        margin-top: -180px;
+    }
+
+    #pokemonDetails {
+        max-height: 400px; /* Set a maximum height for the container */
+        overflow-y: auto; /* Enable vertical scrolling if the content is too long */
+      }
+
+
 } 
