@@ -106,14 +106,5 @@ li {
         margin: 20px 0px 0px -104px ;
     }
 
-    .container-fluid {
-        margin-top: -180px;
-    }
-
-    #pokemonDetails {
-        max-height: 400px; /* Set a maximum height for the container */
-        overflow-y: auto; /* Enable vertical scrolling if the content is too long */
-      }
-
 
 } 
