@@ -10,28 +10,28 @@ import { PokemonDataService } from '../pokemon-data.service';
 })
 export class InfoComponent implements OnInit {
   // selectedPokemonId: number | null = null;
-  selectedPokemon: any;  // Add this line to declare the property
+  selectedPokemon: any;
 
   constructor(
     private pokemonDataService: PokemonDataService,
     private route: ActivatedRoute,
   ) {}
-
+  // Pads the number with leading zeros to ensure it's always 3 digits
   formatPokemonNumber(pokemonNumber: number): string {
-    // Pad the number with leading zeros to ensure it's always 3 digits
     return pokemonNumber.toString().padStart(3, '0');
   }
-
+ // Gets ID from API
   getPokemonId(pokemon: any): number {
     const urlParts = pokemon.url.split('/');
-    // The ID is the last part of the URL
     return parseInt(urlParts[urlParts.length - 2], 10);
   }
 
+  // Capitalizes  first letter in given string
   capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
+  //Function that on initiated gets info, then gets species and flavor text
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
@@ -76,6 +76,7 @@ export class InfoComponent implements OnInit {
       }
     });
   }
+  //Function to construct the URL link for picture
   getImageUrl(pokemonId: number): string {
     const paddedId = pokemonId.toString().padStart(3, '0');
     return `assets/${paddedId}.png`;

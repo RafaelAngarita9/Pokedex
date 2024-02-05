@@ -17,11 +17,12 @@ export class PokemonDataService {
 
   constructor(private http: HttpClient) {}
 
+  //Function that captures information of pokemon getting clicked.
   updateSelectedPokemon(pokemon: any): void {
     this.selectedPokemonSource.next(pokemon);
     console.log('Selected Pokemon updated:', pokemon);
   }
-
+  //Function that get the pokemon weight and height using ID as an indicator
   getPokemonById(id: number): Observable<any> {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon/${id}`;
     return this.http.get<any>(apiUrl).pipe(
@@ -29,7 +30,6 @@ export class PokemonDataService {
         const details = {
           weight: response.weight,
           height: response.height,
-          // Add other details as needed
         };
         response.details = details;
         console.log('API Response:', response);
@@ -40,7 +40,7 @@ export class PokemonDataService {
       })
     );
   }
-
+  //Function to get species directly from API
   getPokemonSpeciesById(id: number): Observable<any> {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
     return this.http.get<any>(apiUrl).pipe(
@@ -54,6 +54,7 @@ export class PokemonDataService {
     );
   }
 
+  //Function to get species directly from API
   getPokemonByName(name: string): Observable<any> {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon/${name}`;
     return this.http.get<any>(apiUrl);
