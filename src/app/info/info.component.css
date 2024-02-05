@@ -111,7 +111,7 @@ h3 {
 
   img {
     height: auto;
-    width: 320px;
+    width: 280px;
     
   }
   div#pokemonDetails {
@@ -121,7 +121,7 @@ h3 {
 }
 
 #pokemonDetails {
-  max-height: 400px; /* Set a maximum height for the container */
-  overflow-y: auto; /* Enable vertical scrolling if the content is too long */
+  max-height: 400px;
+  overflow-y: auto; 
 }
 }
